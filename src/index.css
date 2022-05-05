@@ -1,0 +1,40 @@
+@import-normalize; /* bring in normalize.css styles */
+:root {
+  --card-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
+  --add-text-color: rgb(147, 145, 156);
+  --light-text-color: rgb(255, 255, 255);
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Roboto', 'Segoe UI', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  padding: 0;
+  list-style: none;
+}
+
+p {
+  margin: 0;
+}
