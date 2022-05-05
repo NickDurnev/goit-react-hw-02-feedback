@@ -1,27 +1,57 @@
-import Profile from "./Profile";
+import { Component } from "react";
+import FeedbackOptions from "./FeedbackOptions";
+import Section from "./Section";
 import Statistics from "./Statistics";
-import FriendsList from "./FriendList";
-import TransactionHistory from "./TransactionHistory";
-import user from "../data/user.json";
-import data from "../data/data.json";
-import friends from "../data/friends.json";
-import transactions from "../data/transactions.json";
 
-export const App = () => {
-  return (
-    <div>
-      <Profile
-      username={user.username}
-      tag={user.tag}
-      location={user.location}
-      avatar={user.avatar}
-      stats={user.stats}
-      />
-      <Statistics title="Upload stats" stats={data} />
-      <FriendsList friends={friends} /> 
-      <TransactionHistory items={transactions} />
-    </div>
-  );
-};
+export class App extends Component {
+  state = {
+        good: 0,
+        neutral: 0,
+        bad: 0
+    }
+
+  countTotalFeedback = () => {
+    const { good, neutral, bad } = this.state;
+    const total = good + neutral + bad;
+    return total;
+  };
+
+  countPositiveFeedbackPercentage = () => {
+    const { good } = this.state;
+    const total = this.countTotalFeedback();
+    const positiveFeedback = ((good / total) * 100).toFixed(2);
+    return positiveFeedback;
+  };
+    
+    onLeaveFeedback = type => {
+        this.setState(prevState => ({
+          [type]: prevState[type]+1,
+        }));
+    };
+
+  
+  render() {
+    const { good, neutral, bad } = this.state;
+    return (
+        <div>
+          <Section title="Please leave feedback">
+            <FeedbackOptions
+              options={Object.keys(this.state)}
+              onLeaveFeedback={this.onLeaveFeedback}/>
+          </Section>
+          <Section title="Statistics">
+            <Statistics
+              good={good}
+              neutral={neutral}
+              bad={bad}
+              total={this.countTotalFeedback()}
+              positivePercentage={this.countPositiveFeedbackPercentage()} />
+          </Section>
+        </div>
+      )
+    }
+}
+
+
 
 
