@@ -11,7 +11,7 @@ const Statistics  = ({ good, neutral, bad, total, positivePercentage}) => (
         </StatsList>
 );
 
-Statistics .prototypes = {
+Statistics.prototypes = {
     good: PropTypes.number.isRequired,
     neutral: PropTypes.number.isRequired,
     bad: PropTypes.number.isRequired,
