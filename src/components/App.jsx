@@ -25,9 +25,9 @@ export class App extends Component {
     return positiveFeedback;
   };
     
-    onLeaveFeedback = type => {
+  onLeaveFeedback = ({option}) => {
         this.setState(prevState => ({
-          [type]: prevState[type]+1,
+          [option]: prevState[option]+1,
         }));
     };
 

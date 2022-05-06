@@ -14,6 +14,10 @@ export const Button = styled.button`
     color: var(--light-text-color);
     height: 100%;
 
+    &::first-letter {
+        text-transform: uppercase;
+    }
+
     &:hover,
     &:focus {
     background-color: rgb(114, 79, 163);
